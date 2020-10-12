@@ -4,14 +4,13 @@ import 'package:github_profile/pages/widgets/TextFormField.dart';
 
 Column buildUserData(Profile profile) {
   return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
       UserNameInputField(),
       Column(
         children: [
           Container(
-            width: 150,
-            height: 150,
+            width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image(
@@ -25,18 +24,15 @@ Column buildUserData(Profile profile) {
           Text(
             profile.name,
             style: TextStyle(
-              color: Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               profile.bio,
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 18,
               ),
               textAlign: TextAlign.center,
@@ -61,9 +57,10 @@ Column buildUserData(Profile profile) {
           ),
           width: double.infinity,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 25),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
@@ -71,13 +68,13 @@ Column buildUserData(Profile profile) {
                       profile.followers.toString(),
                       style: TextStyle(
                         color: Color(0xff2BE1C8),
-                        fontSize: 30,
+                        fontSize: 20,
                       ),
                     ),
                     Text(
                       "FOLLOWERS",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     ),
                   ],
@@ -88,13 +85,13 @@ Column buildUserData(Profile profile) {
                       profile.following.toString(),
                       style: TextStyle(
                         color: Color(0xff2BE1C8),
-                        fontSize: 30,
+                        fontSize: 20,
                       ),
                     ),
                     Text(
                       "FOLLOWING",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     ),
                   ],
@@ -102,16 +99,16 @@ Column buildUserData(Profile profile) {
                 Column(
                   children: [
                     Text(
-                      profile.public_repos.toString(),
+                      profile.publicRepos.toString(),
                       style: TextStyle(
                         color: Color(0xff2BE1C8),
-                        fontSize: 30,
+                        fontSize: 20,
                       ),
                     ),
                     Text(
                       "REPOSITORIES",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     ),
                   ],

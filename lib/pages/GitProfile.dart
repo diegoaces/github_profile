@@ -13,7 +13,6 @@ class _GitProfileState extends State<GitProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2BE1C8),
       appBar: AppBar(
         backgroundColor: Color(0xFF188991),
         centerTitle: true,
@@ -23,33 +22,28 @@ class _GitProfileState extends State<GitProfile> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: ListView(
-        children: [
-          Container(
-            height: 650,
-            child: BlocConsumer<ProfileBloc, ProfileState>(
-              builder: (context, state) {
-                if (state is ProfileInitial)
-                  return buildInitialTextField();
-                else if (state is ProfileLoading)
-                  return buildLoadingState();
-                else if (state is ProfileLoaded)
-                  return buildUserData(state.profile);
-                else
-                  return buildInitialTextField();
-              },
-              listener: (context, state) {
-                if (state is ProfileError) {
-                  Scaffold.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(state.error),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
-        ],
+      body: Container(
+        child: BlocConsumer<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            if (state is ProfileInitial)
+              return buildInitialTextField();
+            else if (state is ProfileLoading)
+              return buildLoadingState();
+            else if (state is ProfileLoaded)
+              return buildUserData(state.profile);
+            else
+              return buildInitialTextField();
+          },
+          listener: (context, state) {
+            if (state is ProfileError) {
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error),
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }
@@ -61,8 +55,13 @@ class _GitProfileState extends State<GitProfile> {
   }
 
   Widget buildLoadingState() {
+    String url =
+        'https://github.githubassets.com/images/spinners/octocat-spinner-128.gif';
     return Center(
-      child: CircularProgressIndicator(),
+      child: Image.network(
+        url,
+        width: 50,
+      ),
     );
   }
 }
