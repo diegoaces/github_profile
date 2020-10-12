@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:github_profile/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class UserNameInputField extends StatelessWidget {
+class UserNameInputField extends StatefulWidget {
+  @override
+  _UserNameInputFieldState createState() => _UserNameInputFieldState();
+}
+
+class _UserNameInputFieldState extends State<UserNameInputField> {
   TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -35,6 +41,8 @@ class UserNameInputField extends StatelessWidget {
   }
 
   void submitUserName(BuildContext context, String userName) {
+    //https://github.com/felangel/bloc/issues/587
+    // ignore: close_sinks
     final profileBloc = context.bloc<ProfileBloc>();
     profileBloc.add(GetUser(userName));
   }

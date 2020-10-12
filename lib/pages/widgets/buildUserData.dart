@@ -102,7 +102,7 @@ Column buildUserData(Profile profile) {
                 Column(
                   children: [
                     Text(
-                      profile.public_repos.toString(),
+                      profile.publicRepos.toString(),
                       style: TextStyle(
                         color: Color(0xff2BE1C8),
                         fontSize: 30,
