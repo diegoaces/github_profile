@@ -16,7 +16,7 @@ class _UserNameInputFieldState extends State<UserNameInputField> {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
